@@ -1,0 +1,25 @@
+{
+  "name": "approval-risk-auditor",
+  "version": "0.1.0",
+  "description": "Audit an EVM wallet for unlimited/stale token approvals and emit ready-to-sign revoke calldata",
+  "type": "module",
+  "main": "src/main.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "apify": "^3.5.0",
+    "viem": "^2.57.4"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "mcp": "node mcp/server.js",
+    "test": "node test/local.js"
+  },
+  "bin": {
+    "approval-risk-auditor-mcp": "mcp/server.js"
+  },
+  "author": "bingdashan",
+  "license": "MIT"
+}

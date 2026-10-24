@@ -1,0 +1,54 @@
+{
+  "title": "Approval Risk Auditor input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "wallet": {
+      "title": "Wallet address",
+      "type": "string",
+      "description": "EVM wallet to audit (0x...). Chain data only — no keys required, no funds moved.",
+      "prefill": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "chains": {
+      "title": "Chain ids",
+      "type": "array",
+      "description": "Only Ethereum mainnet (1) is supported in this version.",
+      "items": { "type": "integer" },
+      "default": [1],
+      "prefill": [1]
+    },
+    "mode": {
+      "title": "Data source mode",
+      "type": "string",
+      "enum": ["logs", "etherscan"],
+      "default": "logs",
+      "description": "logs = no API key needed (recommended). etherscan = full history (requires ETHERSCAN_API_KEY env)."
+    },
+    "stale_after_days": {
+      "title": "Stale threshold (days)",
+      "type": "integer",
+      "default": 90,
+      "minimum": 1,
+      "maximum": 3650,
+      "description": "Approvals older than this are flagged as stale."
+    },
+    "lookback_blocks": {
+      "title": "Approval event lookback (blocks)",
+      "type": "integer",
+      "default": 599,
+      "minimum": 1,
+      "maximum": 599,
+      "description": "How far back to scan Approval events. Known-spender allowances are always checked exactly."
+    },
+    "top_tokens": {
+      "title": "Number of top tokens to scan",
+      "type": "integer",
+      "default": 12,
+      "minimum": 1,
+      "maximum": 12,
+      "description": "How many of the canonical top ERC-20 tokens to scan for Approval events."
+    }
+  },
+  "required": ["wallet"]
+}

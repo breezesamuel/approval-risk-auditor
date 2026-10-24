@@ -1,0 +1,9 @@
+node_modules
+.git
+.gitignore
+test
+artifacts
+*.log
+.dockerignore
+.env
+.env.*

@@ -1,0 +1,43 @@
+{
+  "actorSpecification": {
+    "title": "Approval Risk Auditor",
+    "name": "approval-risk-auditor",
+    "version": "0.1.0",
+    "description": "Audit any EVM wallet for unlimited or stale token approvals and get ready-to-sign revoke calldata. Reads chain data only (no keys, no funds touched).",
+    "categories": ["Security", "Finance", "Web3"],
+    "contactUrl": "https://tools.highkingflower.com/",
+    "homepageUrl": "https://tools.highkingflower.com/",
+    "sourceFiles": "./src/main.js",
+    "dockerfile": "./Dockerfile",
+    "readme": "./README.md",
+    "defaultActorPricing": {
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingPerEvent": {
+        "actorChargeEvents": {
+          "audit_completed": {
+            "title": "Wallet approval audit",
+            "description": "One completed approval audit for a single wallet.",
+            "priceUsd": 0.4
+          }
+        }
+      }
+    },
+    "environmentVariables": [
+      {
+        "name": "PUBLIC_BASE_URL",
+        "type": "STRING",
+        "isRequired": false,
+        "defaultValue": "https://tools.highkingflower.com/",
+        "description": "Where to redirect users for full report / upsell."
+      }
+    ],
+    "input": "./input_schema.json",
+    "usesStandInMode": false,
+    "maxTotalCpuSecs": 120,
+    "maxMemoryMbytes": 512,
+    "runTimeSecs": 120,
+    "pricingInfos": {
+      "unitName": "audit"
+    }
+  }
+}
